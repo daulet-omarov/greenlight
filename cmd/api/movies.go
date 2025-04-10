@@ -45,7 +45,3 @@ func (app *application) showMovieHandler(w http.ResponseWriter, r *http.Request)
 		app.serverErrorResponse(w, r, err)
 	}
 }
-
-/*
-curl -d '{"title": "Moana"}' localhost:4000/v1/movies
-*/
