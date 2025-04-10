@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/daulet-omarov/greenlight/internal/data"
 	"net/http"
@@ -16,9 +15,9 @@ func (app *application) createMovieHandler(w http.ResponseWriter, r *http.Reques
 		Genres  []string `json:"genres"`
 	}
 
-	err := json.NewDecoder(r.Body).Decode(&input)
+	err := app.readJSON(w, r, &input)
 	if err != nil {
-		app.errorResponse(w, r, http.StatusBadRequest, err.Error())
+		app.badRequestResponse(w, r, err)
 		return
 	}
 
@@ -48,5 +47,5 @@ func (app *application) showMovieHandler(w http.ResponseWriter, r *http.Request)
 }
 
 /*
-BODY='{"title":"Moana","year":2016,"runtime":107,"genres":["animation","adventure"]}'
+curl -d '{"title": "Moana"}' localhost:4000/v1/movies
 */
