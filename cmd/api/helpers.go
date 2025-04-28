@@ -81,3 +81,9 @@ func (app *application) readJSON(w http.ResponseWriter, r *http.Request, dst any
 
 	return nil
 }
+
+/*
+BODY='{"title":"Black Panther","year":2016,"runtime":"108 mins","genres":["action","adventure"]}'
+BODY='{"title":"Deadpool","year":2018,"runtime":"134 mins","genres":["action","comedy"]}'
+BODY='{"title":"The Breakfast Club","year":1986,"runtime":"96 mins","genres":["drama"]}'
+*/
